@@ -5,7 +5,7 @@ import type { Person } from './people';
 
 const storePath = path.join('./store/data.json')
 
-const getStore = async () => {
+export const getStore = async () => {
     try {
         const data = await fs.promises.readFile(storePath, 'utf8')
         return JSON.parse(data) as AnswerStore
@@ -32,8 +32,12 @@ export async function getPersonAnswers(personId: string) {
     return obj && obj[personId]
 }
 
-export async function saveTargetAnswer (personId: string, targetId: string, answer: PersonAnswer) {
+export async function saveTargetAnswer (personId: string, targetId: string, answer: PersonAnswer['normalAnswers']) {
     return saveStore(personId, {
-        [targetId]: answer
+        [targetId]: {
+            target: targetId,
+            current: personId,
+            normalAnswers: answer,
+        }
     })
 }

@@ -12,8 +12,8 @@ interface NormalQuestion {
 }
 
 export interface PersonAnswer {
-    currentPersonId: string;
-    targetPersonId: string;
+    current: string;
+    target: string;
     normalAnswers: Record<NormalQuestion['id'], Answer['score']>
 }
 
@@ -71,4 +71,8 @@ export const getNormalQuestions = (personId: string) => {
     if (person) {
         return TITLE_QUESTIONS_MAP[person.title]
     }
+}
+
+export const getQuestionById = (target: string) => {
+    return Object.values(TITLE_QUESTIONS_MAP).flat().find(({ id }) => id === target)
 }

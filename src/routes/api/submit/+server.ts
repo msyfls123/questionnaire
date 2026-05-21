@@ -12,10 +12,12 @@ export const POST: RequestHandler = async ({ request }) => {
             r: 1
         })
      }
-     const answers = Array.from(data.entries()).reduce((acc, [key, value]) => ({
-        ...acc,
-        [key]: value
-     }), {} as PersonAnswer);
+     const answers = Array.from(data.entries())
+        .filter(([key]) => !['personId', 'target'].includes(key))
+        .reduce((acc, [key, value]) => ({
+            ...acc,
+            [key]: value as unknown as number
+        }), {} as PersonAnswer['normalAnswers']);
      try {
         await saveTargetAnswer(personId, target, answers)
         return json({
