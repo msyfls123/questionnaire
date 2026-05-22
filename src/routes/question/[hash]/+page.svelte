@@ -5,7 +5,7 @@
     import { toast } from "svelte-sonner";
     import type { PageProps } from "./$types";
     import { Select, SelectContent, SelectItem, SelectTrigger } from "$lib/components/ui/select";
-    import SelectLabel from "$lib/components/ui/select/select-label.svelte";
+    import { resolve } from '$app/paths';
     import { Badge } from "$lib/components/ui/badge";
 
     const { data }: PageProps = $props();
@@ -47,7 +47,7 @@
         const formData = new FormData(e.currentTarget as HTMLFormElement);
         formData.append("target", target);
         formData.append("personId", data.person.id);
-        fetch("/api/submit", {
+        fetch(resolve("/api/submit"), {
             method: "POST",
             body: formData,
         })

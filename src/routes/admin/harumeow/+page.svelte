@@ -4,6 +4,8 @@
     import { getQuestionById, type PersonAnswer } from "$lib/question";
     import { getWeightedMean, sum } from "$lib/statistics";
     import type { PageProps } from "./$types";
+    import { resolve } from '$app/paths';
+
     const { data }: PageProps = $props();
     const answers = $derived(Object.values(data.store ?? {}).flatMap((item) => Object.values(item)))
 </script>
@@ -55,7 +57,7 @@
                     </div>
                     <div class="flex justify-between">
                         {@render statistics(currentAnswers)}
-                        <a href={`/question/${person.hash}`} class="self-end underline underline-offset-5 p-2 hover:text-orange-700">问卷链接</a>
+                        <a href={resolve(`/question/${person.hash}`)} class="self-end underline underline-offset-5 p-2 hover:text-orange-700">问卷链接</a>
                     </div>
                 </div>
             {/each}
