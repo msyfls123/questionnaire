@@ -1,0 +1,10 @@
+services:
+    questionnaire:
+        image: node:24-alpine
+        volumes:
+            - ./build:/app/build
+            - ./store:/app/store
+        working_dir: /app
+        ports:
+            - "3001:3000"
+        command: ["node", "build"]

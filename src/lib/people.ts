@@ -21,6 +21,8 @@ export const PEOPLE: Person[] = [
     { id: '7', name: '柯庭兰', title: Title.Visual, isAdmin: false },
 ]
 
+export const ADMIN_IDS = PEOPLE.filter(({ isAdmin }) => isAdmin).map(({ id }) => id)
+
 export const getPersonById = (targetId: string) => {
     return PEOPLE.find(({ id }) => id === targetId)
 }

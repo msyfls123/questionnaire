@@ -16,7 +16,7 @@ export const POST: RequestHandler = async ({ request }) => {
         .filter(([key]) => !['personId', 'target'].includes(key))
         .reduce((acc, [key, value]) => ({
             ...acc,
-            [key]: value as unknown as number
+            [key]: Number(value)
         }), {} as PersonAnswer['normalAnswers']);
      try {
         await saveTargetAnswer(personId, target, answers)
