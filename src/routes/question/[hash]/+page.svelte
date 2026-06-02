@@ -64,7 +64,7 @@
     <title>评价表</title>
 </svelte:head>
 
-<h1>Hello, {data.person.name}</h1>
+<h1 class="m-4">Hello, {data.person.name}</h1>
 
 <div
     class="space-y-2 p-4 bg-slate-50"
@@ -97,12 +97,16 @@
         bind:this={formEl}
     >
     {#if normalQuestions}
-        {#each normalQuestions as question}
+        {#each normalQuestions as question, index}
             <fieldset
                 disabled={!allowEdit}
-                class={[!allowEdit && 'opacity-15', 'my-4 group/field']}
+                class={[!allowEdit && 'opacity-15', 'my-4 group/field space-y-1 border-b border-b-slate-400 pb-4']}
             >
-                <label>{question.question}</label>
+                <label class="space-x-2 flex">
+                    <span class="bg-red-600  rounded-full size-5 text-center text-sm text-white">{index + 1}</span>
+                    <span>{question.question}</span>
+                </label>
+                <p class="whitespace-pre-line text-sm text-slate-500">{question.description}<p>
                 <p class="grid grid-cols-3 gap-2">
                     {#each question.answerOptions as answer}
                         <label class={[

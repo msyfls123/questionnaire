@@ -27,6 +27,19 @@ const saveStore = async (personId: string, payload: Partial<AnswerStore[Person['
     await fs.promises.writeFile(storePath, JSON.stringify(newStore, null, 2), 'utf-8')
 }
 
+export const clearSingle = async (personId: string, target: string) => {
+    const store = await getStore();
+    if (!store) throw new Error('store is not found' + storePath);
+    const newStore = {
+        ...store,
+        [personId]: {
+            ...store[personId],
+            [target]: undefined
+        }
+    }
+    await fs.promises.writeFile(storePath, JSON.stringify(newStore, null, 2), 'utf-8')
+}
+
 export async function getPersonAnswers(personId: string) {
     const obj = await getStore();
     return obj && obj[personId]

@@ -15,7 +15,7 @@ export const PEOPLE: Person[] = [
     { id: '1', name: '吴青衡', title: Title.Interactive, isAdmin: false },
     { id: '2', name: '汪舒乐', title: Title.Visual, isAdmin: false },
     { id: '3', name: '徐伟斌', title: Title.Interactive, isAdmin: false },
-    { id: '4', name: '柴帧荣', title: Title.Visual, isAdmin: false },
+    { id: '4', name: '柴祯荣', title: Title.Visual, isAdmin: false },
     { id: '5', name: '康泰', title: Title.Visual, isAdmin: false },
     { id: '6', name: '王泽', title: Title.Visual, isAdmin: false },
     { id: '7', name: '柯庭兰', title: Title.Visual, isAdmin: false },
